@@ -1,0 +1,28 @@
+package br.com.gustavo.cadastro_de_pessoa.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import br.com.gustavo.cadastro_de_pessoa.model.Pessoa;
+import br.com.gustavo.cadastro_de_pessoa.repository.PessoaRepository;
+
+@Controller
+@ResponseBody
+public class PessoaController {
+	
+	@Autowired
+	private PessoaRepository pessoaRepository;
+	
+	@GetMapping("/listarpessoas")
+	public List<Pessoa>  listarPessoa(){
+	
+	List<Pessoa> pessoas = pessoaRepository.findAll();
+	
+	   return pessoas;
+	}
+
+}
